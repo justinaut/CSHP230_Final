@@ -1,0 +1,43 @@
+﻿/* Styles used site-wide */
+
+body {
+    background-color: ghostwhite;
+    padding-top: 30px;
+}
+
+.page-container {
+    min-width: 400px;
+}
+
+nav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    background-color: gainsboro;
+    padding: 5px 10px;
+    align-items: center;
+}
+
+nav a:link, nav a:visited {
+    border: 2px solid lightseagreen;
+    color: black;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+nav a:hover, nav a:active {
+    background-color: lightseagreen;
+    color: ghostwhite;
+    font-weight: normal;
+}
+
+a:hover {
+    font-weight: bold;
+}
+
+.float-right {
+    float: right;
+}
