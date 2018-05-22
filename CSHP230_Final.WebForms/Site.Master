@@ -9,6 +9,12 @@
     </asp:ContentPlaceHolder>
 </head>
 <body>
+    <nav>
+        <a class="nav-link" href="Home.aspx">Home</a>
+        <a class="nav-link" href="Classes.aspx">Classes</a>
+        <a class="nav-link" href="NewLogin.aspx">Request a New Login</a>
+        <a class="nav-link align-self-end" href="Login.aspx">Login</a>
+    </nav>
     <h1>Master Header</h1>
     <form id="form1" runat="server">
         <div>
