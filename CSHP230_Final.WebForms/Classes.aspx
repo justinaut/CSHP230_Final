@@ -3,4 +3,13 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <h2>Classes</h2>
+    <div id="classListing">
+        <% if (ClassList == null || ClassList.Count <= 0) { %>
+        <p>No Classes to show right now. Check back later!</p>
+        <% } else { foreach (var classy in ClassList) { %>
+                    <p><% =(classy.ClassName) %> (<% =(classy.ClassDate) %>)</p>
+                    <p><% =(classy.ClassDescription) %></p>
+                <%}
+        } %>
+    </div>
 </asp:Content>

@@ -6,4 +6,5 @@
     <h2>Student Registration</h2>
     <p>Log on with your student login.<br>
         If you do not have a student login, register to create one!</p>
+    <p>Also, take a peek at <a href="MyClasses.aspx">MyClasses.aspx</a> and <a href="Register.aspx">Register.aspx</a></p>
 </asp:Content>
