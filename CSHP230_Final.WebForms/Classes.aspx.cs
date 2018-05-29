@@ -23,37 +23,36 @@ namespace CSHP230_Final.WebForms
         {
             var classes = new List<Class>();
 
-            // Not working. Need to revisit this.
+            OleDbConnection connection = new OleDbConnection();
+            connection.ConnectionString = ConfigurationManager.ConnectionStrings["AdvWebDevProject"].ConnectionString;
+            connection.Open();
+            using (connection)
+            {
+                string sql = "SELECT ClassId, ClassName, ClassDate, ClassDescription FROM vClasses";
+                OleDbCommand command = new OleDbCommand();
+                command.Connection = connection;
+                command.CommandType = System.Data.CommandType.Text;
+                command.CommandText = sql;
 
-            //OleDbConnection connection = new OleDbConnection();
-            //connection.ConnectionString = ConfigurationManager.ConnectionStrings["LocalServer"].ConnectionString;
-            //connection.Open();
-            //using (connection)
-            //{
-            //    string sql = "SELECT ClassId, ClassName, ClassDate, ClassDescription FROM vClasses";
-            //    OleDbCommand command = new OleDbCommand();
-            //    command.Connection = connection;
-            //    command.CommandType = System.Data.CommandType.Text;
-            //    command.CommandText = sql;
-
-            //    try
-            //    {
-            //        OleDbDataReader dataReader = command.ExecuteReader();
-            //        while (dataReader.Read() == true)
-            //        {
-            //            var classy = new Class();
-            //            classy.ClassId = (int)dataReader["ClassId"];
-            //            classy.ClassName = dataReader["ClassName"].ToString();
-            //            classy.ClassDate = dataReader.GetDateTime(dataReader.GetOrdinal("ClassDate"));
-            //            classy.ClassDescription = dataReader["ClassDescription"].ToString();
-            //        }
-            //        dataReader.Close();
-            //    }
-            //    catch (Exception exception)
-            //    {
-            //        Console.WriteLine("Exception: " + exception.Message);
-            //    }
-            //}
+                try
+                {
+                    OleDbDataReader dataReader = command.ExecuteReader();
+                    while (dataReader.Read() == true)
+                    {
+                        var classy = new Class();
+                        classy.ClassId = (int)dataReader["ClassId"];
+                        classy.ClassName = dataReader["ClassName"].ToString();
+                        classy.ClassDate = dataReader.GetDateTime(dataReader.GetOrdinal("ClassDate"));
+                        classy.ClassDescription = dataReader["ClassDescription"].ToString();
+                        classes.Add(classy);
+                    }
+                    dataReader.Close();
+                }
+                catch (Exception exception)
+                {
+                    Console.WriteLine("Exception: " + exception.Message);
+                }
+            }
 
             return classes;
         }

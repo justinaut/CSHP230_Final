@@ -8,7 +8,7 @@
     <asp:TextBox ID="LoginName_TextBox" runat="server" /><br />
 
     <asp:Label ID="Password_Label" AssociatedControlID="Password_TextBox" Text="Password" runat="server" /><br />
-    <asp:TextBox ID="Password_TextBox" runat="server" /><br />
+    <asp:TextBox ID="Password_TextBox" TextMode="Password" runat="server" /><br />
 
     <asp:Button runat="server" ID="Login_Button" Text="Login" OnClick="Login_Button_Click"></asp:Button>
 </asp:Content>

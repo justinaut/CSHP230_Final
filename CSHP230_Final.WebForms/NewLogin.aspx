@@ -22,6 +22,15 @@
     <asp:Label ID="Reason_Label" class="left" AssociatedControlID="Reason_Textbox" Text="Reason for Access?" runat="server" /><br />
     <asp:TextBox ID="Reason_Textbox" runat="server" TextMode="multiLine" Columns="50" Rows="5" />
     <asp:RequiredFieldValidator ID="Reason_RequiredFieldValidator" runat="server" ErrorMessage="A Reason is required" ControlToValidate="Reason_Textbox"></asp:RequiredFieldValidator><br />
-    
+
+    <asp:Label ID="NewOrReactivate_Label" AssociatedControlID="NewOrReactivate_RadioButtonList" Text="New or Reactivation?" runat="server" /><br />
+    <asp:RadioButtonList ID="NewOrReactivate_RadioButtonList" runat="server">
+        <asp:ListItem ID="New_ListItem" value="New Request" runat="server" />
+        <asp:ListItem ID="Reactivate_ListItem" value="Reactivate Existing Account" runat="server" />
+    </asp:RadioButtonList>
+
+    <asp:Label ID="DateNeeded_Label" AssociatedControlID="DateNeeded_TextBox" Text="Date Needed" runat="server" /><br />
+    <asp:TextBox ID="DateNeeded_Textbox" runat="server" /><br />
+    <br />
     <asp:Button runat="server" ID="RegistrationSubmit_Button" Text="Submit Login Request" OnClick="RegistrationSubmit_Button_Click"></asp:Button>
 </asp:Content>

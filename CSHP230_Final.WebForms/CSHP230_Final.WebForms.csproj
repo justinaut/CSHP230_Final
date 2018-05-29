@@ -69,6 +69,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Home.aspx" />
+    <Content Include="PostRegistration.aspx" />
     <None Include="packages.config" />
     <None Include="Scripts\jQuery\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jQuery\jquery-3.3.1.js" />
@@ -150,6 +151,13 @@
     </Compile>
     <Compile Include="Home.aspx.designer.cs">
       <DependentUpon>Home.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PostRegistration.aspx.cs">
+      <DependentUpon>PostRegistration.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PostRegistration.aspx.designer.cs">
+      <DependentUpon>PostRegistration.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

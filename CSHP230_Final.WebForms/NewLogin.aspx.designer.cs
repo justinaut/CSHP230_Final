@@ -121,6 +121,60 @@ namespace CSHP230_Final.WebForms {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator Reason_RequiredFieldValidator;
         
         /// <summary>
+        /// NewOrReactivate_Label control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label NewOrReactivate_Label;
+        
+        /// <summary>
+        /// NewOrReactivate_RadioButtonList control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButtonList NewOrReactivate_RadioButtonList;
+        
+        /// <summary>
+        /// New_ListItem control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ListItem New_ListItem;
+        
+        /// <summary>
+        /// Reactivate_ListItem control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ListItem Reactivate_ListItem;
+        
+        /// <summary>
+        /// DateNeeded_Label control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label DateNeeded_Label;
+        
+        /// <summary>
+        /// DateNeeded_Textbox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox DateNeeded_Textbox;
+        
+        /// <summary>
         /// RegistrationSubmit_Button control.
         /// </summary>
         /// <remarks>
