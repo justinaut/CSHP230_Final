@@ -181,6 +181,49 @@ namespace CSHP230_Final.WebForms.Repository
             return successfulQuery;
         }
 
+        public bool GetClassesByStudentId(int studentId, out List<Class> classes)
+        {
+            classes = null;
+            bool successfulQuery = false;
+
+            OleDbConnection connection = GetConnection();
+            connection.Open();
+            using (connection)
+            {
+                OleDbCommand spCommand = new OleDbCommand("pSelClassesByStudentId", connection);
+                spCommand.CommandType = System.Data.CommandType.StoredProcedure;
+
+                OleDbParameter studentIdParameter = new OleDbParameter("@StudentId", OleDbType.Integer);
+                studentIdParameter.Direction = System.Data.ParameterDirection.Input;
+                studentIdParameter.Value = studentId;
+                spCommand.Parameters.Add(studentIdParameter);
+
+                try
+                {
+                    OleDbDataReader dataReader = spCommand.ExecuteReader();
+                    classes = new List<Class>();
+                    while (dataReader.Read() == true)
+                    {
+                        var classy = new Class();
+                        classy.ClassId = (int)dataReader["ClassId"];
+                        classy.ClassName = dataReader["ClassName"].ToString();
+                        classy.ClassDate = dataReader.GetDateTime(dataReader.GetOrdinal("ClassDate"));
+                        classy.ClassDescription = dataReader["ClassDescription"].ToString();
+                        classes.Add(classy);
+                    }
+
+                    successfulQuery = true;
+                    dataReader.Close();
+                }
+                catch (Exception exception)
+                {
+                    Console.WriteLine("Exception: " + exception.Message);
+                }
+            }
+
+            return successfulQuery;
+        }
+
         public bool SaveRegistrationData(string name, string email, string login, string reason, string newOrReactivate, DateTime needDate, out int loginId)
         {
             loginId = 0;

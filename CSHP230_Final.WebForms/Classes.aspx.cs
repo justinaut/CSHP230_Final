@@ -21,6 +21,7 @@ namespace CSHP230_Final.WebForms
 
         private List<Class> GetAllClasses()
         {
+            // TODO: Have this method called once per request. It's called three times.
             CourseRegistrationRepository repo = new CourseRegistrationRepository();
             List<Class> classes;
             repo.GetAllClasses(out classes);

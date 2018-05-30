@@ -11,7 +11,7 @@ namespace CSHP230_Final.WebForms
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            ViewState["UserLoggedIn"] = Session["LoggedInUser"] == null ? "n" : "y";
         }
     }
 }

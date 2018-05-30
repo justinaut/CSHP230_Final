@@ -10,15 +10,31 @@
     </asp:ContentPlaceHolder>
 </head>
 <body>
+    <% if (ViewState["UserLoggedIn"] != null && ViewState["UserLoggedIn"].ToString() == "y")
+        { %>
     <nav>
         <strong>Course Registration</strong>&nbsp;
         <a href="Home.aspx">Home</a>
-        <a href="Classes.aspx">Classes</a>
+        <a href="Classes.aspx">Course Catalog</a>
+        <a href="MyClasses.aspx">My Classes</a>
+        <a href="Register.aspx">Register</a>
+        <div class="float-right">
+            <a href="Login.aspx">My Info</a>
+        </div>
+    </nav>
+    <% }
+    else
+    { %>
+    <nav>
+        <strong>Course Registration</strong>&nbsp;
+        <a href="Home.aspx">Home</a>
+        <a href="Classes.aspx">Course Catalog</a>
         <div class="float-right">
             <a href="NewLogin.aspx">Request a New Login</a>
             <a href="Login.aspx">Login</a>
         </div>
     </nav>
+    <% } %>
     <form id="form1" runat="server">
         <div>
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
