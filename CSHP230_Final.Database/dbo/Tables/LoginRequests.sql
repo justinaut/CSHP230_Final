@@ -5,7 +5,9 @@
     [LoginName]       NVARCHAR (50) NOT NULL,
     [NewOrReactivate] NVARCHAR (50) NOT NULL,
     [ReasonForAccess] NVARCHAR (50) NOT NULL,
-    [DateNeededBy]    DATETIME      NULL,
+    [DateRequiredBy]  DATETIME      NULL,
     CONSTRAINT [PK_LoginRequests] PRIMARY KEY CLUSTERED ([LoginId] ASC)
 );
+
+
 

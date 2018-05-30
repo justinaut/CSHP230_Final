@@ -1,27 +1,24 @@
-﻿CREATE -- DROP
-PROCEDURE dbo.pUpdClassStudents ( 
-  @OriginalClassId int
-, @OriginalStudentId int
-, @NewClassId int
-, @NewStudentId int
+﻿CREATE --DROP
+PROCEDURE dbo.pInsClasses ( 
+  @ClassId int
+, @ClassName nvarchar(100)
+, @ClassDate datetime
+, @ClassDescription nvarchar(2000)
 )
 AS
 /***************************************************
 Dev: RRoot
-Date: Nov, 10, 2011
-Desc: This stored procedure changes data in the 
-ClassStudents table 
+Date: May, 23, 2018
+Desc: This stored procedure adds data to the Classes table 
 ChangeLog: (Who, When, What)
 ***************************************************/
 BEGIN -- Body of stored procedure:
   BEGIN TRY
     BEGIN TRANSACTION;
     ------------------- Transaction Statement:
-    UPDATE [AdvWebDevProject].[dbo].[ClassStudents]
-     SET [ClassId] = @NewClassId
-          , [StudentId] = @NewStudentId
-     Where  [ClassId] = @OriginalClassId
-     AND [StudentId] = @OriginalStudentId;
+       INSERT INTO [Classes]
+               ([ClassId], [ClassName], [ClassDate], [ClassDescription])
+         VALUES(@ClassId, @ClassName, @ClassDate, @ClassDescription);
     ------------------- Transaction Statement;
     COMMIT TRANSACTION;
     RETURN +100
@@ -36,6 +33,6 @@ BEGIN -- Body of stored procedure:
 END; -- Body of stored procedure;
 GO
 GRANT EXECUTE
-    ON OBJECT::[dbo].[pUpdClassStudents] TO PUBLIC
+    ON OBJECT::[dbo].[pInsClasses] TO PUBLIC
     AS [dbo];
 

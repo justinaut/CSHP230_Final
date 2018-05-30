@@ -1,3 +1,8 @@
-﻿Create View vClasses
+﻿Create View vClasses -- Required for Project
 AS
-SELECT [ClassId], [ClassName], [ClassDate], [ClassDescription] FROM [Classes]
+Select [ClassId], [ClassName], [ClassDate], [ClassDescription] From [Classes]
+GO
+GRANT SELECT
+    ON OBJECT::[dbo].[vClasses] TO PUBLIC
+    AS [dbo];
+

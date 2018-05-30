@@ -1,0 +1,3 @@
+﻿CREATE USER [CSharp] FOR LOGIN [CSharp]
+    WITH DEFAULT_SCHEMA = [CSharp];
+

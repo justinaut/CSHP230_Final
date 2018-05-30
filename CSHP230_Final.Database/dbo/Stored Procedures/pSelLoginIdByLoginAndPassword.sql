@@ -14,21 +14,25 @@ ChangeLog: (Who, When, What)
 ***************************************************/
 BEGIN -- Body of stored procedure:
   BEGIN TRY
-    --BEGIN TRANSACTION;
-    ------------------- Transaction Statement:
-    SELECT @StudentId = [StudentId]
-      FROM [AdvWebDevProject].[dbo].[Students]
-      WHERE [StudentLogin] = @StudentLogin
+    ------------------- Reporting Statement:
+    Select @StudentId = [StudentId]
+      From [AdvWebDevProject].[dbo].[Students]
+      Where [StudentLogin] = @StudentLogin
       AND [StudentPassword] = @StudentPassword;
-    ------------------- Transaction Statement;
-    --COMMIT TRANSACTION;
+    If(@@ROWCOUNT = 0) RaisError('No Login Found', 15, 1);
+    ------------------- Reporting Statement;
     RETURN +100
   END TRY   
   BEGIN CATCH
     --ROLLBACK TRANSACTION;
-    DECLARE @Message nVarchar(1000);
-    SELECT @Message = ERROR_MESSAGE();
+    Declare @Message nVarchar(1000);
+    Select @Message = ERROR_MESSAGE();
     RAISERROR(@Message, 15, 1);     
     RETURN -100     
   END CATCH
 END; -- Body of stored procedure;
+GO
+GRANT EXECUTE
+    ON OBJECT::[dbo].[pSelLoginIdByLoginAndPassword] TO PUBLIC
+    AS [dbo];
+
