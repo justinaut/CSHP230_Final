@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CSHP230_Final.WebForms.Repository;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.OleDb;
@@ -35,62 +36,13 @@ namespace CSHP230_Final.WebForms
                 && !string.IsNullOrWhiteSpace(reason)
                 && !string.IsNullOrWhiteSpace(newOrReactivate))
             {
-                SaveRegistrationInformation(name, email, login, reason, newOrReactivate, needDate);
+                //SaveRegistrationInformation(name, email, login, reason, newOrReactivate, needDate);
+                CourseRegistrationRepository repo = new CourseRegistrationRepository();
+                int loginId;
+                repo.SaveRegistrationData(name, email, login, reason, newOrReactivate, needDate, out loginId);
             }
 
             Response.Redirect("PostRegistration.aspx");
-        }
-
-        private void SaveRegistrationInformation(string name, string email, string login, string reason, string newOrReactivate, DateTime needDate)
-        {
-            OleDbConnection connection = new OleDbConnection();
-            connection.ConnectionString = ConfigurationManager.ConnectionStrings["AdvWebDevProject"].ConnectionString;
-            connection.Open();
-
-            OleDbCommand spCommand = new OleDbCommand("pInsLoginRequest", connection);
-            spCommand.CommandType = System.Data.CommandType.StoredProcedure;
-
-            OleDbParameter nameParameter = new OleDbParameter("@Name", OleDbType.VarWChar, 50);
-            nameParameter.Direction = System.Data.ParameterDirection.Input;
-            nameParameter.Value = name;
-            spCommand.Parameters.Add(nameParameter);
-
-            OleDbParameter emailParameter = new OleDbParameter("@EmailAddress", OleDbType.VarWChar, 50);
-            emailParameter.Direction = System.Data.ParameterDirection.Input;
-            emailParameter.Value = email;
-            spCommand.Parameters.Add(emailParameter);
-
-            OleDbParameter loginParameter = new OleDbParameter("@LoginName", OleDbType.VarWChar, 50);
-            loginParameter.Direction = System.Data.ParameterDirection.Input;
-            loginParameter.Value = login;
-            spCommand.Parameters.Add(loginParameter);
-
-            OleDbParameter reasonParameter = new OleDbParameter("@ReasonForAccess", OleDbType.VarWChar, 50);
-            reasonParameter.Direction = System.Data.ParameterDirection.Input;
-            reasonParameter.Value = reason;
-            spCommand.Parameters.Add(reasonParameter);
-
-            OleDbParameter newOrReactivateParameter = new OleDbParameter("@NewOrReactivate", OleDbType.VarWChar, 50);
-            newOrReactivateParameter.Direction = System.Data.ParameterDirection.Input;
-            newOrReactivateParameter.Value = newOrReactivate;
-            spCommand.Parameters.Add(newOrReactivateParameter);
-
-            OleDbParameter needDateParameter = new OleDbParameter("@DateNeededBy", OleDbType.DBDate);
-            needDateParameter.Direction = System.Data.ParameterDirection.Input;
-            needDateParameter.Value = needDate;
-            spCommand.Parameters.Add(needDateParameter);
-
-            using (connection)
-            {
-                try
-                {
-                    spCommand.ExecuteNonQuery();
-                }
-                catch (Exception exception)
-                {
-                    Console.WriteLine("Exception: " + exception.Message);
-                }
-            }
         }
     }
 }

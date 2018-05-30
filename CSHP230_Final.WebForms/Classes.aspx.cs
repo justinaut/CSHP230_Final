@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using CSHP230_Final.WebForms.Models;
+using CSHP230_Final.WebForms.Repository;
 
 namespace CSHP230_Final.WebForms
 {
@@ -14,46 +15,15 @@ namespace CSHP230_Final.WebForms
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
         }
 
         public List<Class> ClassList { get { return GetAllClasses(); } }
 
         private List<Class> GetAllClasses()
         {
-            var classes = new List<Class>();
-
-            OleDbConnection connection = new OleDbConnection();
-            connection.ConnectionString = ConfigurationManager.ConnectionStrings["AdvWebDevProject"].ConnectionString;
-            connection.Open();
-            using (connection)
-            {
-                string sql = "SELECT ClassId, ClassName, ClassDate, ClassDescription FROM vClasses";
-                OleDbCommand command = new OleDbCommand();
-                command.Connection = connection;
-                command.CommandType = System.Data.CommandType.Text;
-                command.CommandText = sql;
-
-                try
-                {
-                    OleDbDataReader dataReader = command.ExecuteReader();
-                    while (dataReader.Read() == true)
-                    {
-                        var classy = new Class();
-                        classy.ClassId = (int)dataReader["ClassId"];
-                        classy.ClassName = dataReader["ClassName"].ToString();
-                        classy.ClassDate = dataReader.GetDateTime(dataReader.GetOrdinal("ClassDate"));
-                        classy.ClassDescription = dataReader["ClassDescription"].ToString();
-                        classes.Add(classy);
-                    }
-                    dataReader.Close();
-                }
-                catch (Exception exception)
-                {
-                    Console.WriteLine("Exception: " + exception.Message);
-                }
-            }
-
+            CourseRegistrationRepository repo = new CourseRegistrationRepository();
+            List<Class> classes;
+            repo.GetAllClasses(out classes);
             return classes;
         }
     }
