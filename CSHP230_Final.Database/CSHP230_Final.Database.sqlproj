@@ -61,6 +61,7 @@
     <Folder Include="dbo\Tables\" />
     <Folder Include="dbo\Views\" />
     <Folder Include="dbo\Stored Procedures\" />
+    <Folder Include="Security\" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\Students.sql" />
@@ -72,8 +73,22 @@
     <Build Include="dbo\Stored Procedures\pSelLoginIdByLoginAndPassword.sql" />
     <Build Include="dbo\Stored Procedures\pSelClassesByStudents.sql" />
     <Build Include="dbo\Stored Procedures\pSelClassesByStudentID.sql" />
-    <Build Include="dbo\Stored Procedures\pInsLoginRequest.sql" />
     <Build Include="dbo\Stored Procedures\pInsClassStudents.sql" />
     <Build Include="dbo\Stored Procedures\pDelClassStudents.sql" />
+    <Build Include="dbo\Views\vStudents.sql" />
+    <Build Include="dbo\Views\vLoginRequests.sql" />
+    <Build Include="dbo\Views\vClassStudents.sql" />
+    <Build Include="dbo\Views\vClassesByStudents.sql" />
+    <Build Include="Security\CSharp.sql" />
+    <Build Include="dbo\Stored Procedures\pUpdStudents.sql" />
+    <Build Include="dbo\Stored Procedures\pUpdLoginRequests.sql" />
+    <Build Include="dbo\Stored Procedures\pUpdClasses.sql" />
+    <Build Include="dbo\Stored Procedures\pInsStudents.sql" />
+    <Build Include="dbo\Stored Procedures\pInsLoginRequests.sql" />
+    <Build Include="dbo\Stored Procedures\pInsClasses.sql" />
+    <Build Include="dbo\Stored Procedures\pDelStudents.sql" />
+    <Build Include="dbo\Stored Procedures\pDelLoginRequests.sql" />
+    <Build Include="dbo\Stored Procedures\pDelClasses.sql" />
+    <Build Include="Security\CSharp_1.sql" />
   </ItemGroup>
 </Project>
