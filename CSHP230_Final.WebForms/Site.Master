@@ -19,6 +19,7 @@
         <a href="MyClasses.aspx">My Classes</a>
         <a href="Register.aspx">Register</a>
         <div class="float-right">
+            <%=ViewState["StudentName"].ToString() %>&nbsp;
             <a href="Login.aspx">My Info</a>
         </div>
     </nav>

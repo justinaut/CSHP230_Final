@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CSHP230_Final.WebForms.App_Code;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,7 +12,16 @@ namespace CSHP230_Final.WebForms
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            ViewState["UserLoggedIn"] = Session["LoggedInUser"] == null ? "n" : "y";
+            if (Session["LoggedInUser"] != null)
+            {
+                Student student = ((Student)Session["LoggedInUser"]);
+                ViewState["UserLoggedIn"] = "y";
+                ViewState["StudentName"] = student.StudentName;
+            }
+            else
+            {
+                ViewState["UserLoggedIn"] = "n";
+            }
         }
     }
 }

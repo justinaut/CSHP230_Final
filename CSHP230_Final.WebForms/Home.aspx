@@ -5,7 +5,8 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <% if (ViewState["UserLoggedIn"] != null && ViewState["UserLoggedIn"].ToString() == "y")
         { %>
-    <h2>Welcome!</h2>
+    <h2>Welcome</h2>
+    <p>Thank you for being a student with us, <%=ViewState["StudentName"].ToString() %>!</p>
     <% }
     else
     {%>

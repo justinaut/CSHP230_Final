@@ -4,8 +4,8 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <% if (ViewState["UserLoggedIn"] != null && ViewState["UserLoggedIn"].ToString() == "y")
         { %>
-    <h2>Welcome!</h2>
-    <p>Hi, <%=ViewState["StudentName"].ToString() %> !</p>
+    <h2>Student Info</h2>
+    <p>Hi, <%=ViewState["StudentName"].ToString() %>!</p>
     <p>Looks like your login name is <strong><%=ViewState["StudentLogin"] %></strong> and the email address we have on file is<strong> <%=ViewState["StudentEmail"]  %></strong>.</p>
     <% }
         else
