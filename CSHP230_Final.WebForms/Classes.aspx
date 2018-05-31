@@ -7,8 +7,8 @@
         <% if (ClassList == null || ClassList.Count <= 0) { %>
         <p>No Classes to show right now. Check back later!</p>
         <% } else { foreach (var classy in ClassList) { %>
-                    <p><strong><% =(classy.ClassName) %></strong> (Date: <% =(classy.ClassDate).ToString("yyyy-MM-dd") %>)</p>
-                    <p><i><% =(classy.ClassDescription) %></i></p>
+                    <p><strong><%=classy.ClassName %></strong> (Date: <%=(classy.ClassDate).ToString("yyyy-MM-dd") %>)</p>
+                    <p><i><%=classy.ClassDescription %></i></p>
                 <%}
         } %>
     </div>

@@ -1,0 +1,9 @@
+﻿/* Styles for Register.aspx */
+
+.feedback-text-attention {
+    color: red;
+}
+
+.feedback-text-success {
+    color: green;
+}

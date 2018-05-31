@@ -183,7 +183,7 @@ namespace CSHP230_Final.WebForms.Repository
 
         public bool GetClassesByStudentId(int studentId, out List<Class> classes)
         {
-            classes = null;
+            classes = new List<Class>();
             bool successfulQuery = false;
 
             OleDbConnection connection = GetConnection();
@@ -201,7 +201,6 @@ namespace CSHP230_Final.WebForms.Repository
                 try
                 {
                     OleDbDataReader dataReader = spCommand.ExecuteReader();
-                    classes = new List<Class>();
                     while (dataReader.Read() == true)
                     {
                         var classy = new Class();
@@ -285,6 +284,81 @@ namespace CSHP230_Final.WebForms.Repository
                 {
                     spCommand.ExecuteNonQuery();
                     successfulQuery = int.TryParse(spCommand.Parameters["@LoginId"].Value.ToString(), out loginId);
+                }
+                catch (Exception exception)
+                {
+                    Console.WriteLine("Exception: " + exception.Message);
+                }
+            }
+
+            return successfulQuery;
+        }
+
+        public bool GetRegisteredClassIds(int studentId, out List<int> ids)
+        {
+            ids = new List<int>();
+            bool successfulQuery = false;
+
+            OleDbConnection connection = GetConnection();
+            connection.Open();
+
+            using (connection)
+            {
+                OleDbCommand spCommand = new OleDbCommand("pSelClassesByStudentId", connection);
+                spCommand.CommandType = System.Data.CommandType.StoredProcedure;
+
+                OleDbParameter studentIdParameter = new OleDbParameter("@StudentId", OleDbType.Integer);
+                studentIdParameter.Direction = System.Data.ParameterDirection.Input;
+                studentIdParameter.Value = studentId;
+                spCommand.Parameters.Add(studentIdParameter);
+
+                try
+                {
+                    OleDbDataReader dataReader = spCommand.ExecuteReader();
+                    while (dataReader.Read() == true)
+                    {
+                        int id = (int)dataReader["ClassId"];
+                        ids.Add(id);
+                    }
+
+                    successfulQuery = true;
+                    dataReader.Close();
+                }
+                catch (Exception exception)
+                {
+                    Console.WriteLine("Exception: " + exception.Message);
+                }
+            }
+
+            return successfulQuery;
+        }
+
+        public bool RegisterClassForStudentId(int classId, int studentId)
+        {
+            bool successfulQuery = false;
+
+            OleDbConnection connection = GetConnection();
+            connection.Open();
+
+            using (connection)
+            {
+                OleDbCommand spCommand = new OleDbCommand("pInsClassStudents", connection);
+                spCommand.CommandType = System.Data.CommandType.StoredProcedure;
+
+                OleDbParameter classIdParameter = new OleDbParameter("@ClassId", OleDbType.Integer);
+                classIdParameter.Direction = System.Data.ParameterDirection.Input;
+                classIdParameter.Value = classId;
+                spCommand.Parameters.Add(classIdParameter);
+
+                OleDbParameter studentIdParameter = new OleDbParameter("@StudentId", OleDbType.Integer);
+                studentIdParameter.Direction = System.Data.ParameterDirection.Input;
+                studentIdParameter.Value = studentId;
+                spCommand.Parameters.Add(studentIdParameter);
+
+                try
+                {
+                    spCommand.ExecuteNonQuery();
+                    successfulQuery = true;
                 }
                 catch (Exception exception)
                 {

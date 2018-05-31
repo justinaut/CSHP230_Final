@@ -89,6 +89,7 @@
   <ItemGroup>
     <Content Include="Global.asax" />
     <Content Include="Styles\Custom\NewLogin.css" />
+    <Content Include="Styles\Custom\Register.css" />
     <Content Include="Styles\Custom\SiteMaster.css" />
     <Content Include="Web.config" />
     <Content Include="Login.aspx" />
