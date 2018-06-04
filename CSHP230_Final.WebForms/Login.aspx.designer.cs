@@ -31,6 +31,15 @@ namespace CSHP230_Final.WebForms {
         protected global::System.Web.UI.WebControls.TextBox LoginName_Textbox;
         
         /// <summary>
+        /// LoginName_RequiredFieldValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator LoginName_RequiredFieldValidator;
+        
+        /// <summary>
         /// Password_Label control.
         /// </summary>
         /// <remarks>
@@ -47,6 +56,15 @@ namespace CSHP230_Final.WebForms {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox Password_Textbox;
+        
+        /// <summary>
+        /// Password_RequiredFieldValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator Password_RequiredFieldValidator;
         
         /// <summary>
         /// Login_Button control.

@@ -21,6 +21,7 @@
         <div class="float-right">
             <%=ViewState["StudentName"].ToString() %>&nbsp;
             <a href="Login.aspx">My Info</a>
+            <a href="Logout.aspx">Logout</a>
         </div>
     </nav>
     <% }

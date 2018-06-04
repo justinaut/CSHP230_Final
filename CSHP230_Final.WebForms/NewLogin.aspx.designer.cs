@@ -175,6 +175,15 @@ namespace CSHP230_Final.WebForms {
         protected global::System.Web.UI.WebControls.TextBox DateNeeded_Textbox;
         
         /// <summary>
+        /// DateNeeded_RequiredFieldValidator1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator DateNeeded_RequiredFieldValidator1;
+        
+        /// <summary>
         /// RegistrationSubmit_Button control.
         /// </summary>
         /// <remarks>

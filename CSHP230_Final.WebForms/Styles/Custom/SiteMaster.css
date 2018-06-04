@@ -41,3 +41,11 @@ a:hover {
 .float-right {
     float: right;
 }
+
+.feedback-text-attention {
+    color: red;
+}
+
+.feedback-text-success {
+    color: green;
+}
